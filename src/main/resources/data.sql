@@ -1,0 +1,1 @@
+insert into t_item(id,item_name,item_count,create_time)values (1,'test1',1,NOW());

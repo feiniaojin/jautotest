@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.feiniaojin.jautotest.dao.ItemMapper">
+    <select id="getById" resultType="com.feiniaojin.jautotest.entity.Item">
+        SELECT id,
+            item_name as itemName,
+            item_count as itemCount,
+            create_time as createTime
+        from t_item
+        where id=#{id}
+    </select>
+
+    <update id="create" parameterType="com.feiniaojin.jautotest.entity.Item">
+        insert into t_item(item_name,item_count,create_time)values (#{itemName},#{itemCount},#{createTime});
+    </update>
+</mapper>

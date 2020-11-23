@@ -1,0 +1,39 @@
+spring:
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  resources:
+    static-locations: classpath:/static/,classpath:/views/
+  datasource:
+    hikari:
+      minimum-idle: 4
+      maximum-pool-size: 15
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: DatebookHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 10000
+      url: jdbc:h2:mem://localhost/testdb;shutdown=true
+      driver-class-name: org.h2.Driver
+      #启动时需要初始化的建表语句
+      schema:
+        - classpath*:schema.sql
+      #初始化的数据
+      data: classpath*:data.sql
+      # Initialize the datasource with available DDL and DML scripts.
+      initialization-mode: always
+      continue-on-error: false
+        #data-password:
+        #data-username:
+        #schema-password:
+      #schema-username:
+      sql-script-encoding: utf-8
+mybatis:
+  mapper-locations: classpath*:mappers/*.xml
+  type-aliases-package: com.feiniaojin.jautotest.entity
+logging:
+  level:
+    root: INFO
+    com:
+      feiniaojin:
+        jautotest: DEBUG
