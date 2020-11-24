@@ -11,5 +11,5 @@ public interface ItemMapper {
 
     Item getById(Long id);
 
-    int create(Item item);
+    Integer create(Item item);
 }

@@ -13,10 +13,21 @@ spring:
       pool-name: DatebookHikariCP
       max-lifetime: 1800000
       connection-timeout: 10000
-      url: jdbc:mysql://rm-2zeg7zcbytwi5b97mso.mysql.rds.aliyuncs.com:3306/campus_job_db_0
-      username: campus_job_user
-      password: Gingo@8795
-      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:h2:mem://localhost/testdb;shutdown=true
+      driver-class-name: org.h2.Driver
+      #启动时需要初始化的建表语句
+      schema:
+        - classpath*:schema.sql
+      #初始化的数据
+      data: classpath*:data.sql
+      # Initialize the datasource with available DDL and DML scripts.
+      initialization-mode: always
+      continue-on-error: false
+        #data-password:
+        #data-username:
+        #schema-password:
+      #schema-username:
+      sql-script-encoding: utf-8
 mybatis:
   mapper-locations: classpath*:mappers/*.xml
   type-aliases-package: com.feiniaojin.jautotest.entity
