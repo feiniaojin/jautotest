@@ -26,6 +26,9 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public void create(ItemDto itemDto) {
+        if (itemDto.getItemName() == null) {
+            return;
+        }
         Item item = Item.ItemBuilder.anItem()
                 .withItemCount(itemDto.getItemCount())
                 .withItemName(itemDto.getItemName())

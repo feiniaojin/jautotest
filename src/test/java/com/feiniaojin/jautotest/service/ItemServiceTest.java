@@ -58,4 +58,17 @@ class ItemServiceTest {
 
         itemService.create(build);
     }
+
+    @Test
+    @DisplayName("ItemService:创建item，名称为空")
+    void createWithItemNameIsNull() {
+
+        ItemDto build = ItemDto.ItemDtoBuilder.anItemDto().withId(1L)
+                .withItemCount(1).withCreateTime(new Date()).withItemName(null).build();
+
+        Mockito.when(itemMapper.create(Mockito.any()))
+                .thenReturn(1);
+
+        itemService.create(build);
+    }
 }

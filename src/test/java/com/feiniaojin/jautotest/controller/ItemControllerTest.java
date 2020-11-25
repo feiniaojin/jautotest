@@ -103,6 +103,10 @@ class ItemControllerTest {
         Assertions.assertNotNull(contentAsString);
     }
 
+    /**
+     * 模拟有异常的情景
+     * @throws Exception
+     */
     @Test
     void createException() throws Exception {
 
